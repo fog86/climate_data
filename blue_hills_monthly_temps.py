@@ -69,9 +69,10 @@ titles = {
     'mly_max_maxt_n': 'Normalized Maximum Daily High Temperature',
     'mly_mean_maxt_n': 'Normalized Mean Daily High Temperature',
     'mly_mean_avgt_n': 'Normalized Mean Daily Mean Temperature'
- }
+}
 # %%
 # Plot data
+
 
 def plot_metric(metric):
 
@@ -83,10 +84,10 @@ def plot_metric(metric):
         colorscale='balance',
         xbins_size=10,
         ybins_size=1,
-        texttemplate= "%{z:.1f}",
+        texttemplate="%{z:.1f}",
         colorbar={"ticksuffix": "°F",
-                "showticksuffix": "last",
-                "nticks": 10}
+                  "showticksuffix": "last",
+                  "nticks": 10}
     ))
 
     fig.update_layout(
@@ -97,6 +98,8 @@ def plot_metric(metric):
         yaxis_title="Month"
     )
     return fig
+
+
 # %%
 metric = 'mly_mean_avgt_n'
 fig = plot_metric(metric)
