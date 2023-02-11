@@ -1,2 +1,2 @@
-# hanscom_climate
-Hanscom AFB weather station data visualizations
+# climate_data
+Blue Hill Observatory weather station data visualizations
