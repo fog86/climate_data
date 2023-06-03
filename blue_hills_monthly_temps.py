@@ -4,6 +4,7 @@ import json
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.io as pio
+from datetime import date
 
 """
 Queries historical temperature data from ACIS API for Blue Hill
@@ -97,6 +98,25 @@ def plot_metric(metric):
         xaxis_title="Year",
         yaxis_title="Month"
     )
+
+    today = date.today()
+    note = f'''Data Source: https://www.rcc-acis.org/<br>Aggregated by: Will Gardner, fog86@yahoo.com<br>Updated: {today}'''
+    
+    fig.add_annotation(
+        text=note,
+         showarrow=False,
+         x=0,
+         y=-0.27,
+         xref='paper',
+         yref='paper' ,
+         xanchor='left',
+         yanchor='bottom',
+         xshift=-1,
+         yshift=-5,
+         font=dict(size=10, color="grey"),
+         align="left"
+        )
+    
     return fig
 
 
