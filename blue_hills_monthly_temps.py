@@ -74,6 +74,13 @@ titles = {
 # %%
 # Plot data
 
+def format_title(title, subtitle=None, subtitle_font_size=12):
+    title = f'{title}'
+    if not subtitle:
+        return title
+    subtitle = f'<span style="font-size: {subtitle_font_size}px;">{subtitle}</span>'
+    return f'{title}<br>{subtitle}'
+
 
 def plot_metric(metric):
 
@@ -91,32 +98,18 @@ def plot_metric(metric):
                   "nticks": 10}
     ))
 
+    today = date.today()
+    title = "Blue Hill Observatory: " + titles[metric]
+    subtitle = f'''Data Source: https://www.rcc-acis.org/, Contact: fog86@yahoo.com, Updated: {today}'''
+
     fig.update_layout(
-        title="Blue Hill Observatory: " + titles[metric],
+        title=format_title(title, subtitle, 10),
         xaxis_tickangle=270,
         xaxis_nticks=36,
         xaxis_title="Year",
         yaxis_title="Month"
-    )
-
-    today = date.today()
-    note = f'''Data Source: https://www.rcc-acis.org/<br>Aggregated by: Will Gardner, fog86@yahoo.com<br>Updated: {today}'''
-    
-    fig.add_annotation(
-        text=note,
-         showarrow=False,
-         x=0,
-         y=-0.27,
-         xref='paper',
-         yref='paper' ,
-         xanchor='left',
-         yanchor='bottom',
-         xshift=-1,
-         yshift=-5,
-         font=dict(size=10, color="grey"),
-         align="left"
         )
-    
+
     return fig
 
 
